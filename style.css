@@ -1,0 +1,334 @@
+/* ==========================================================================
+   1. 基礎重設與變數設定 (Reset & Variables)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+:root {
+    --muji-red: #7F1D1D;       /* 無印良品經典深紅 */
+    --muji-bg: #FDFBF7;        /* 溫暖的米白底色 */
+    --muji-text: #333333;      /* 內斂深灰黑文字 */
+    --muji-muted: #7F7F7F;     /* 說明文字淡灰色 */
+    --muji-border: #EFEBE4;    /* 溫和的邊框線條 */
+}
+
+body {
+    background-color: var(--muji-bg);
+    color: var(--muji-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ==========================================================================
+   2. 導覽列 (Navbar)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--muji-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--muji-red);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.brand-name:hover {
+    opacity: 0.8;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--muji-text);
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--muji-red);
+}
+
+/* ==========================================================================
+   3. 主視覺區 (Hero Section)
+   ========================================================================== */
+.hero-section {
+    height: 70vh;
+    min-height: 450px;
+    background-color: #EFEBE4; /* 模擬大地面料的溫暖色調 */
+    /* 這裡使用一張色調簡約乾淨的空間意象圖作為 Hero Background */
+    background-image: linear-gradient(rgba(253, 251, 247, 0.45), rgba(253, 251, 247, 0.45)), 
+                      url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.hero-content {
+    max-width: 550px;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明白底，保持文字易讀性 */
+    padding: 3rem;
+    border-radius: 2px;
+}
+
+.hero-subtitle {
+    color: var(--muji-red);
+    font-size: 1rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+    font-size: 0.95rem;
+    color: #555555;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--muji-red);
+    color: #ffffff;
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #631717;
+}
+
+/* ==========================================================================
+   4. 品牌理念 (Philosophy Section)
+   ========================================================================== */
+.philosophy-section {
+    padding: 6rem 0 4rem;
+    text-align: center;
+    background-color: var(--muji-bg);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* 標題下方極簡的小紅線點綴 */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 1.5px;
+    background-color: var(--muji-red);
+}
+
+.section-subtitle {
+    max-width: 650px;
+    margin: 1.5rem auto 0;
+    font-size: 1rem;
+    color: var(--muji-muted);
+}
+
+/* ==========================================================================
+   5. 商品網格區 (Product Section)
+   ========================================================================== */
+.products-section {
+    padding: 2rem 0 6rem;
+    background-color: var(--muji-bg);
+}
+
+/* 使用 CSS Grid 排版商品，靈活且簡潔 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(three, 1fr); /* 預設桌面版三欄 */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2.5rem;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid var(--muji-border);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 微弱的懸停效果，符合無印不張揚的個性 */
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+}
+
+.product-img-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* 固定圖片比例 */
+    overflow: hidden;
+    background-color: #F5F5F5;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保圖片不變形填滿空間 */
+    transition: transform 0.5s;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.03); /* 輕微放大 */
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-category {
+    font-size: 0.8rem;
+    color: var(--muji-red);
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+.product-desc {
+    font-size: 0.88rem;
+    color: var(--muji-muted);
+    margin-bottom: 1.5rem;
+    height: 4.4rem; /* 固定描述高度，維持卡片整齊 */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 最多顯示三行 */
+    -webkit-box-orient: vertical;
+}
+
+.product-price {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muji-text);
+}
+
+/* ==========================================================================
+   6. 頁尾 (Footer)
+   ========================================================================== */
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--muji-border);
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muji-muted);
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   7. RWD 響應式斷點 (Media Queries)
+   ========================================================================== */
+
+/* 平板尺寸 */
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 變為兩欄 */
+    }
+}
+
+/* 手機尺寸 */
+@media (max-width: 768px) {
+    /* 導覽列轉為垂直排列 */
+    .navbar {
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 1.2rem 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        text-align: center;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-top: 1px solid var(--muji-border);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.8rem 0;
+    }
+
+    /* Hero 區調整 */
+    .hero-section {
+        height: auto;
+        padding: 4rem 1rem;
+    }
+
+    .hero-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    /* 商品網格轉為單欄 */
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .product-desc {
+        height: auto; /* 手機上解除高度限制 */
+    }
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 自動將 6 個商品排成 3 欄 × 2 列 */
+    gap: 2.5rem;
+}
